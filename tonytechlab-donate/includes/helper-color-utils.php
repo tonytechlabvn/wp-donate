@@ -44,7 +44,7 @@ function tonytechlab_donate_font_stacks() {
  */
 function tonytechlab_donate_font_urls() {
     return array(
-        'inter'     => 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+        'inter'     => 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap',
         'system'    => null,
         'roboto'    => 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
         'open-sans' => 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap',
