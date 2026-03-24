@@ -71,14 +71,7 @@
     line-height: 1.7;
 }
 
-/* ── Scroll Reveal ── */
-.donate-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-}
-.donate-reveal.is-visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .donate-reveal { opacity: 1; transform: none; transition: none; } }
+/* Scroll reveal removed — all sections always visible */
 
 /* ── Buttons ── */
 .donate-btn {
@@ -730,7 +723,6 @@
     .donate-hero { background: none; padding: 1rem 0; }
     .donate-hero__image-wrap::before, .donate-hero__badge, .donate-hero::after { display: none; }
     .donate-btn, .donate-page-footer__social { display: none; }
-    .donate-reveal { opacity: 1; transform: none; }
 }
 
 /* ============================================================

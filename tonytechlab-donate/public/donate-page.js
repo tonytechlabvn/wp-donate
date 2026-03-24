@@ -146,32 +146,7 @@
         }, 2000);
     }
 
-    /* ── 5. Scroll Reveal with Staggered Delays ── */
-    function initScrollReveal() {
-        if (!('IntersectionObserver' in window)) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        var sections = page.querySelectorAll(
-            '.donate-mission, .donate-stats, .donate-funds, ' +
-            '.donate-testimonials, .donate-payment, .donate-faq, .donate-page-footer'
-        );
-
-        sections.forEach(function (el, i) {
-            el.classList.add('donate-reveal');
-            el.style.transitionDelay = (i * 0.05) + 's';
-        });
-
-        var observer = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-
-        sections.forEach(function (el) { observer.observe(el); });
-    }
+    /* Scroll reveal removed — all sections always visible */
 
     /* ── 6. Hide Parent Theme Sections & Sidebar — Force Single Column ── */
     function hideParentThemeSections() {
@@ -210,7 +185,6 @@
         initStatCounters();
         initSmoothScroll();
         initCopyButtons();
-        initScrollReveal();
         hideParentThemeSections();
     });
 })();
