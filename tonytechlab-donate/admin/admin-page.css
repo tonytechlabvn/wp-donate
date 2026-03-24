@@ -1,0 +1,100 @@
+/* TonyTechLab Donate — Admin Settings Styles */
+
+.ttl-admin-tab-content {
+    margin-top: 16px;
+    max-width: 800px;
+}
+
+/* Repeater rows */
+.ttl-repeater__rows {
+    margin-bottom: 12px;
+}
+
+.ttl-repeater__row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-wrap: wrap;
+}
+
+.ttl-repeater__handle {
+    cursor: move;
+    color: #999;
+    padding: 4px 2px;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.ttl-repeater__handle:hover {
+    color: #333;
+}
+
+.ttl-repeater__row .ttl-field {
+    flex: 1;
+    min-width: 120px;
+}
+
+.ttl-repeater__row .ttl-field--small {
+    flex: 0 0 80px;
+    min-width: 80px;
+}
+
+.ttl-repeater__row .ttl-field input,
+.ttl-repeater__row .ttl-field textarea {
+    width: 100%;
+}
+
+.ttl-repeater__row .ttl-field textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.ttl-repeater__row .ttl-field label {
+    display: block;
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.ttl-repeater__remove {
+    flex-shrink: 0;
+    align-self: center;
+    color: #b32d2e;
+}
+
+.ttl-repeater__add {
+    margin-top: 4px;
+}
+
+/* Mission paragraphs */
+.ttl-paragraphs__item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+}
+
+.ttl-paragraphs__item textarea {
+    flex: 1;
+    min-height: 80px;
+}
+
+/* Color picker alignment */
+.form-table .wp-picker-container {
+    display: inline-block;
+}
+
+/* Section description text */
+.ttl-admin-description {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 16px;
+}

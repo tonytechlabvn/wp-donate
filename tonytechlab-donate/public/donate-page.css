@@ -1,0 +1,1100 @@
+/* ============================================================
+   TonyTechLab Donate Page — Modern Two-Column Design
+   Mobile-first responsive. Scoped under .donate-page.
+   ============================================================ */
+
+/* ── Design Tokens ── */
+:root {
+    --donate-primary: #2563eb;
+    --donate-primary-dark: #1d4ed8;
+    --donate-primary-light: #dbeafe;
+    --donate-primary-lighter: #eff6ff;
+    --donate-secondary: #f97316;
+    --donate-secondary-dark: #ea580c;
+    --donate-text: #1e293b;
+    --donate-text-light: #64748b;
+    --donate-text-muted: #94a3b8;
+    --donate-bg: #ffffff;
+    --donate-bg-alt: #f8fafc;
+    --donate-bg-blue: #eef4ff;
+    --donate-border: #e2e8f0;
+    --donate-radius: 12px;
+    --donate-radius-lg: 16px;
+    --donate-radius-xl: 24px;
+    --donate-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --donate-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --donate-shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --donate-content-width: 1140px;
+    --donate-font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base / Reset ── */
+.donate-page {
+    font-family: var(--donate-font);
+    color: var(--donate-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.donate-page *,
+.donate-page *::before,
+.donate-page *::after {
+    box-sizing: border-box;
+}
+
+.donate-container {
+    max-width: var(--donate-content-width);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* ── Section Titles ── */
+.donate-section-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 0.5rem;
+    color: var(--donate-text);
+    letter-spacing: -0.03em;
+}
+
+.donate-section-subtitle {
+    text-align: center;
+    color: var(--donate-text-light);
+    font-size: 1rem;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+}
+
+/* ── Scroll Reveal ── */
+.donate-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.donate-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .donate-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Buttons ── */
+.donate-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-family: var(--donate-font);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    line-height: 1;
+}
+
+.donate-btn:focus-visible {
+    outline: 3px solid var(--donate-primary);
+    outline-offset: 3px;
+}
+
+.donate-btn--primary {
+    background: var(--donate-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.donate-btn--primary:hover {
+    background: var(--donate-primary-dark);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+.donate-btn--outline {
+    background: transparent;
+    color: var(--donate-text);
+    border-color: var(--donate-border);
+}
+
+.donate-btn--outline:hover {
+    border-color: var(--donate-primary);
+    color: var(--donate-primary);
+    background: var(--donate-primary-lighter);
+}
+
+.donate-btn--copy {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    background: var(--donate-primary-light);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    margin-left: 0.5rem;
+    color: var(--donate-primary);
+    font-weight: 500;
+}
+
+.donate-btn--copy:hover {
+    background: var(--donate-primary);
+    color: #ffffff;
+}
+
+.donate-btn--copy.is-copied {
+    background: #dcfce7;
+    border-color: #86efac;
+    color: #166534;
+}
+
+/* ============================================================
+   HERO — Two-Column with Image
+   ============================================================ */
+.donate-hero {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 50%, #f8fbff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.donate-hero__tag {
+    display: inline-block;
+    padding: 0.35rem 1rem;
+    background: var(--donate-primary-light);
+    color: var(--donate-primary);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 999px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+.donate-hero__title {
+    font-size: clamp(1.8rem, 5vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 1.25rem;
+    color: var(--donate-text);
+    letter-spacing: -0.03em;
+}
+
+.donate-hero__highlight {
+    background: linear-gradient(135deg, #2563eb, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.donate-hero__subtitle {
+    font-size: 0.95rem;
+    color: var(--donate-text-light);
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    max-width: 480px;
+}
+
+.donate-hero__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.donate-hero__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.donate-hero__image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Dot pattern behind image */
+.donate-hero__image-wrap::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 160px;
+    height: 160px;
+    background-image: radial-gradient(circle, var(--donate-primary) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+    opacity: 0.12;
+    z-index: 0;
+    border-radius: 8px;
+}
+
+.donate-hero__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--donate-radius-lg);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    z-index: 1;
+}
+
+/* Gradient placeholder when no image URL is set */
+.donate-hero__image--placeholder {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 3rem;
+}
+
+.donate-hero__badge {
+    position: absolute;
+    bottom: -0.75rem;
+    left: -0.5rem;
+    background: var(--donate-bg);
+    padding: 0.85rem 1rem;
+    border-radius: var(--donate-radius);
+    box-shadow: var(--donate-shadow-lg);
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    max-width: 260px;
+    z-index: 2;
+    border: 1px solid var(--donate-border);
+}
+
+.donate-hero__badge-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--donate-primary-light);
+    border-radius: 8px;
+}
+
+.donate-hero__badge-text strong {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--donate-text);
+    margin-bottom: 0.15rem;
+}
+
+.donate-hero__badge-text p {
+    font-size: 0.7rem;
+    color: var(--donate-text-light);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* ============================================================
+   MISSION — Two-Column with Image & Badges
+   ============================================================ */
+.donate-mission {
+    padding: 4rem 0;
+    background: var(--donate-bg);
+}
+
+.donate-mission__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.donate-mission__content {
+    max-width: 100%;
+}
+
+.donate-mission__content p {
+    font-size: 0.95rem;
+    color: var(--donate-text-light);
+    margin: 0 0 1.5rem;
+    line-height: 1.8;
+}
+
+.donate-mission__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.donate-mission__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--donate-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.donate-mission__bullet-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--donate-primary);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    margin-top: 2px;
+}
+
+.donate-mission__visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.donate-mission__image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+}
+
+.donate-mission__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--donate-radius-lg);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+.donate-mission__image--placeholder {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+}
+
+.donate-mission__badge {
+    position: absolute;
+    background: var(--donate-bg);
+    padding: 0.6rem 1rem;
+    border-radius: var(--donate-radius);
+    box-shadow: var(--donate-shadow-lg);
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 2;
+    border: 1px solid var(--donate-border);
+}
+
+.donate-mission__badge--top {
+    top: -0.75rem;
+    right: -0.5rem;
+    color: var(--donate-primary);
+}
+
+.donate-mission__badge--top small {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--donate-text-light);
+}
+
+.donate-mission__badge--bottom {
+    bottom: -0.75rem;
+    left: -0.5rem;
+    color: var(--donate-primary);
+    font-size: 1.5rem;
+}
+
+.donate-mission__badge--bottom small {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--donate-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   STATS — Light Horizontal Row
+   ============================================================ */
+.donate-stats {
+    padding: 3.5rem 0;
+    background: var(--donate-bg-alt);
+}
+
+.donate-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.donate-stats__card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.donate-stats__number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--donate-text);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.donate-stats__suffix {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--donate-text);
+}
+
+.donate-stats__label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--donate-text-light);
+    margin-top: 0.4rem;
+    font-weight: 500;
+}
+
+/* ============================================================
+   FUNDS — 4-Column Colored Icon Cards
+   ============================================================ */
+.donate-funds {
+    padding: 4rem 0;
+    background: var(--donate-bg);
+}
+
+.donate-funds__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: var(--donate-content-width);
+    margin: 0 auto;
+}
+
+.donate-funds__card {
+    background: var(--donate-bg);
+    border-radius: var(--donate-radius-lg);
+    padding: 1.75rem 1.5rem;
+    text-align: left;
+    border: 1px solid var(--donate-border);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.donate-funds__card:hover {
+    box-shadow: var(--donate-shadow-md);
+    transform: translateY(-3px);
+}
+
+.donate-funds__icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+}
+
+/* Icon color variants */
+.donate-funds__icon--blue {
+    background: var(--donate-primary-light);
+    color: var(--donate-primary);
+}
+
+.donate-funds__icon--green {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.donate-funds__icon--purple {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.donate-funds__icon--orange {
+    background: #ffedd5;
+    color: #ea580c;
+}
+
+.donate-funds__title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--donate-text);
+}
+
+.donate-funds__desc {
+    font-size: 0.85rem;
+    color: var(--donate-text-light);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   TESTIMONIALS — 3-Column Cards with Avatars
+   ============================================================ */
+.donate-testimonials {
+    padding: 4rem 0;
+    background: var(--donate-bg-alt);
+}
+
+.donate-testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: var(--donate-content-width);
+    margin: 0 auto;
+}
+
+.donate-testimonials__card {
+    background: var(--donate-bg);
+    border-radius: var(--donate-radius-lg);
+    padding: 1.75rem;
+    margin: 0;
+    box-shadow: var(--donate-shadow);
+    border: 1px solid var(--donate-border);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.donate-testimonials__card:hover {
+    box-shadow: var(--donate-shadow-md);
+    transform: translateY(-2px);
+}
+
+.donate-testimonials__quote {
+    font-size: 0.9rem;
+    font-style: normal;
+    color: var(--donate-text-light);
+    margin: 0 0 1.25rem;
+    line-height: 1.7;
+    flex: 1;
+}
+
+.donate-testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--donate-border);
+}
+
+.donate-testimonials__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--donate-primary-light);
+    color: var(--donate-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.donate-testimonials__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.donate-testimonials__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.donate-testimonials__name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    font-style: normal;
+    color: var(--donate-text);
+}
+
+.donate-testimonials__course {
+    font-size: 0.7rem;
+    color: var(--donate-text-muted);
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   PAYMENT — Two-Tone Card (White Info + Blue QR)
+   ============================================================ */
+.donate-payment {
+    padding: 4rem 0;
+    background: var(--donate-bg-blue);
+}
+
+.donate-payment .donate-section-title {
+    text-align: left;
+}
+
+.donate-payment .donate-section-subtitle {
+    text-align: left;
+    margin-left: 0;
+}
+
+.donate-payment__card {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-radius: var(--donate-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--donate-shadow-lg);
+}
+
+.donate-payment__info {
+    background: var(--donate-bg);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.donate-payment__field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--donate-bg-alt);
+    border-radius: 10px;
+    border: 1px solid var(--donate-border);
+}
+
+.donate-payment__field-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--donate-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donate-payment__field-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.donate-payment__field-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--donate-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.15rem;
+}
+
+.donate-payment__field-value {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--donate-text);
+}
+
+.donate-payment__qr {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 80%);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+}
+
+.donate-payment__qr-img {
+    border-radius: var(--donate-radius);
+    max-width: 180px;
+    height: auto;
+    background: #ffffff;
+    padding: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.donate-payment__qr-label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1rem 0 0.35rem;
+}
+
+.donate-payment__qr-desc {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    line-height: 1.5;
+    max-width: 260px;
+    margin: 0;
+}
+
+/* ============================================================
+   FAQ — Accordion with Chevrons
+   ============================================================ */
+.donate-faq {
+    padding: 4rem 0;
+    background: var(--donate-bg);
+}
+
+.donate-faq__list {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.donate-faq__item {
+    border: 1px solid var(--donate-border);
+    border-radius: var(--donate-radius);
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+    background: var(--donate-bg);
+    transition: all 0.25s ease;
+}
+
+.donate-faq__item:hover {
+    border-color: var(--donate-primary-light);
+}
+
+.donate-faq__item.is-open {
+    border-color: var(--donate-primary);
+    box-shadow: 0 0 0 1px var(--donate-primary), var(--donate-shadow);
+}
+
+.donate-faq__question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border: none;
+    background: none;
+    font-family: var(--donate-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--donate-text);
+    cursor: pointer;
+    text-align: left;
+    gap: 1rem;
+    transition: color 0.2s;
+}
+
+.donate-faq__question:hover {
+    color: var(--donate-primary);
+}
+
+.donate-faq__question:focus-visible {
+    outline: 3px solid var(--donate-primary);
+    outline-offset: -3px;
+}
+
+.donate-faq__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    color: var(--donate-text-light);
+}
+
+.donate-faq__icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.donate-faq__item.is-open .donate-faq__icon {
+    transform: rotate(180deg);
+    color: var(--donate-primary);
+}
+
+.donate-faq__answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0;
+}
+
+.donate-faq__answer[hidden] {
+    display: block;
+    max-height: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+.donate-faq__item.is-open .donate-faq__answer {
+    padding: 0 1.25rem 1.25rem;
+    visibility: visible;
+}
+
+.donate-faq__answer p {
+    font-size: 0.85rem;
+    color: var(--donate-text-light);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ============================================================
+   FOOTER — Horizontal Columns
+   ============================================================ */
+.donate-page-footer {
+    padding: 3rem 0;
+    background: #0f172a;
+    color: #cbd5e1;
+}
+
+.donate-page-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+}
+
+.donate-page-footer__brand-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.35rem;
+}
+
+.donate-page-footer__disclaimer {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.donate-page-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+}
+
+.donate-page-footer__links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.donate-page-footer__links a:hover {
+    color: #ffffff;
+}
+
+.donate-page-footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.donate-page-footer__social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+}
+
+.donate-page-footer__social a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.donate-page-footer__copyright {
+    font-size: 0.75rem;
+    color: #475569;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ============================================================
+   Responsive — Tablet (>= 768px)
+   ============================================================ */
+@media (min-width: 768px) {
+    .donate-container {
+        padding: 0 2rem;
+    }
+
+    .donate-hero {
+        padding: 5rem 0;
+    }
+
+    .donate-hero__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .donate-mission__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .donate-mission .donate-section-title {
+        text-align: left;
+    }
+
+    .donate-stats__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .donate-funds__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .donate-testimonials__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .donate-payment__card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .donate-payment__info {
+        padding: 2.5rem;
+    }
+
+    .donate-payment__qr {
+        padding: 2.5rem;
+    }
+
+    .donate-page-footer__grid {
+        grid-template-columns: 1fr auto auto;
+        text-align: left;
+        align-items: center;
+    }
+
+    .donate-page-footer__links {
+        justify-content: flex-start;
+    }
+
+    .donate-page-footer__social {
+        justify-content: flex-end;
+    }
+
+    .donate-mission,
+    .donate-stats,
+    .donate-funds,
+    .donate-testimonials,
+    .donate-payment,
+    .donate-faq,
+    .donate-page-footer {
+        padding: 5rem 0;
+    }
+}
+
+/* ============================================================
+   Responsive — Desktop (>= 1024px)
+   ============================================================ */
+@media (min-width: 1024px) {
+    .donate-hero__title {
+        font-size: 2.75rem;
+    }
+
+    .donate-stats__number {
+        font-size: 3rem;
+    }
+
+    .donate-hero__badge {
+        left: -1.5rem;
+        bottom: -1rem;
+    }
+}
+
+/* ============================================================
+   Print
+   ============================================================ */
+@media print {
+    .donate-hero {
+        background: none;
+        color: var(--donate-text);
+        padding: 1rem 0;
+    }
+
+    .donate-hero__image-wrap::before,
+    .donate-hero__badge {
+        display: none;
+    }
+
+    .donate-btn,
+    .donate-page-footer__social {
+        display: none;
+    }
+
+    .donate-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ============================================================
+   Force single-column — hide theme sidebar, full-width content
+   ============================================================ */
+body.ttl-donate-active aside:not(.donate-page aside),
+body.ttl-donate-active [role="complementary"]:not(.donate-page [role="complementary"]) {
+    display: none !important;
+}
+
+/* Override Bootstrap col-sm-9 and theme layout to full-width */
+body.ttl-donate-active .site-main.col-sm-9,
+body.ttl-donate-active .col-sm-9.alignleft,
+body.ttl-donate-active .content-area,
+body.ttl-donate-active .site-content > .row,
+body.ttl-donate-active .lp-content-area {
+    max-width: 100% !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+body.ttl-donate-active .entry-content {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* ============================================================
+   WordPress theme section overrides
+   ============================================================ */
+.donate-page ~ section,
+.donate-page ~ .lp-archive-courses,
+.donate-page ~ .learn-press-courses,
+.donate-page ~ .list-blog,
+.donate-page ~ .list-blog-posts,
+.donate-page ~ .site-content-bottom,
+.donate-page ~ .related-posts,
+.donate-page ~ .popular-courses,
+.donate-page ~ .recent-posts-section {
+    display: none !important;
+}

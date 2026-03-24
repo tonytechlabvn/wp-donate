@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node \"D:/Data/Projects/donate_page/.claude/scripts/set-active-plan.cjs\" \"plans/260324-1425-donate-landing-page\")",
+      "Bash(ls:*)",
+      "Bash(node \"D:/Data/Projects/donate_page/.claude/scripts/set-active-plan.cjs\" \"plans/260324-1539-donate-plugin-conversion\")",
+      "Bash(powershell -Command \"Compress-Archive -Path ''tonytechlab-donate'' -DestinationPath ''tonytechlab-donate.zip'' -Force\")",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_fill_form",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_file_upload",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "Bash(powershell -Command \"[System.IO.Compression.ZipFile]::OpenRead\\('D:\\\\Data\\\\Projects\\\\donate_page\\\\tonytechlab-donate.zip'\\).Entries | Select-Object -First 10 FullName\")",
+      "Bash(powershell -Command \"Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::OpenRead\\('D:\\\\Data\\\\Projects\\\\donate_page\\\\tonytechlab-donate.zip'\\).Entries | Select-Object -First 10 FullName\")",
+      "mcp__plugin_playwright_playwright__browser_handle_dialog",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"nonprofit education donation landing page professional modern\" --design-system -p \"TonyTechLab Donate\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"donation nonprofit social-proof trust\" --domain ux -n 10)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"animation loading accessibility\" --domain ux -n 8)"
+    ]
+  }
+}
