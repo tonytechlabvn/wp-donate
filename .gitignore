@@ -89,6 +89,7 @@ worktrees/
 *.zip
 *.png
 !tonytechlab-donate/public/images/*.jpg
+!tonytechlab-donate/screenshots/*.png
 
 # Claude skills (large, not project code)
 .claude/skills/
