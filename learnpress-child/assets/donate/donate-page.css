@@ -802,6 +802,117 @@
 }
 
 /* ============================================================
+   Mobile UX Enhancements (< 768px)
+   Editorial typography, bento cards, touch-optimized targets
+   ============================================================ */
+@media (max-width: 767px) {
+    /* ── Global mobile spacing ── */
+    .donate-container { padding: 0 1.25rem; }
+
+    /* ── Hero: editorial mobile layout ── */
+    .donate-hero__title {
+        font-size: clamp(1.85rem, 8vw, 2.5rem);
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+    }
+    .donate-hero__subtitle {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+    /* Full-width stacked CTA buttons */
+    .donate-hero__actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+    }
+    .donate-hero__actions .donate-btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        justify-content: center;
+        min-height: 52px;
+    }
+
+    /* ── Section titles compact ── */
+    .donate-section-title {
+        font-size: clamp(1.35rem, 5vw, 1.75rem);
+        margin-bottom: 0.35rem;
+    }
+    .donate-section-subtitle {
+        font-size: 0.88rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    /* ── Stats: bento-style compact cards ── */
+    .donate-stats { padding: 3rem 0; }
+    .donate-stats__grid { gap: 0.75rem; }
+    .donate-stats__card {
+        padding: 1.25rem 1rem;
+        text-align: left;
+    }
+    .donate-stats__number { font-size: 1.75rem; }
+    .donate-stats__suffix { font-size: 1.25rem; }
+    .donate-stats__label { font-size: 0.75rem; margin-top: 0.25rem; }
+
+    /* ── Mission ── */
+    .donate-mission { padding: 3rem 0; }
+    .donate-mission__content p { font-size: 0.92rem; line-height: 1.7; }
+    .donate-mission__bullet-icon { width: 22px; height: 22px; font-size: 0.65rem; }
+    .donate-mission__bullets li { font-size: 0.88rem; }
+
+    /* ── Funds compact ── */
+    .donate-funds { padding: 3rem 0; }
+    .donate-funds__card { padding: 1.25rem; }
+    .donate-funds__icon { width: 44px; height: 44px; font-size: 1.2rem; margin-bottom: 1rem; }
+    .donate-funds__title { font-size: 0.95rem; }
+    .donate-funds__desc { font-size: 0.8rem; line-height: 1.5; }
+
+    /* ── Testimonials compact ── */
+    .donate-testimonials { padding: 3rem 0; }
+    .donate-testimonials__card { padding: 1.5rem; }
+    .donate-testimonials__quote { font-size: 0.9rem; line-height: 1.65; }
+    .donate-testimonials__avatar { width: 38px; height: 38px; }
+    .donate-testimonials__name { font-size: 0.85rem; }
+    .donate-testimonials__course { font-size: 0.65rem; }
+
+    /* ── Payment: mobile-optimized ── */
+    .donate-payment { padding: 3rem 0; }
+
+    /* ── FAQ: touch-friendly tap targets ── */
+    .donate-faq { padding: 3rem 0; }
+    .donate-faq__item { margin-bottom: 0.6rem; }
+    .donate-faq__question {
+        padding: 1rem 1.15rem;
+        font-size: 0.9rem;
+        min-height: 52px;
+    }
+    .donate-faq__answer p { font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── Footer compact ── */
+    .donate-page-footer { padding: 2.5rem 0; }
+    .donate-page-footer__title { font-size: 1.1rem; }
+    .donate-page-footer__social a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    .donate-page-footer__disclaimer { font-size: 0.75rem; }
+}
+
+/* ============================================================
+   Small phone enhancements (< 375px)
+   ============================================================ */
+@media (max-width: 374px) {
+    .donate-hero__title { font-size: 1.65rem; }
+    .donate-stats__number { font-size: 1.5rem; }
+    .donate-stats__suffix { font-size: 1.1rem; }
+    .donate-stats__card { padding: 1rem 0.75rem; }
+    .donate-funds__card { padding: 1rem; }
+    .donate-funds__title { font-size: 0.85rem; }
+    .donate-funds__desc { font-size: 0.72rem; }
+}
+
+/* ============================================================
    Responsive — Tablet (>= 768px)
    ============================================================ */
 @media (min-width: 768px) {

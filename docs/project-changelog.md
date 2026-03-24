@@ -4,6 +4,62 @@ All notable changes to the TonyTechLab Donate Landing Page project are documente
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-03-24
+
+### Changed
+
+#### Mobile UX/UI Overhaul
+- **Hero Section**: editorial typography (tracking -0.04em, line-height 1.08), full-width stacked CTA buttons with 52px min touch height
+- **Stats Section**: bento-style compact 2x2 cards, left-aligned text, reduced padding
+- **Funds Cards**: compact 2-col layout, smaller icons (44px), tighter padding
+- **Mission Section**: tighter paragraph spacing, compressed image grid (180px height)
+- **Payment Section**: centered mobile title/subtitle, compact fields with 12px rounded corners, mobile-friendly QR padding
+- **Testimonials**: compact card padding, smaller avatars (38px), better mobile line-height
+- **FAQ**: 52px minimum touch target height (WCAG compliant), tighter item spacing
+- **Footer**: 44px min touch targets for links and social icons, compact typography
+- **Small Phone (<375px)**: additional downsizing for iPhone SE-class devices
+
+#### Technical Details
+- Added `@media (max-width: 767px)` mobile enhancement block to `donate-page.css`
+- Added `@media (max-width: 374px)` small phone block for narrow screens
+- Updated both plugin CSS (`tonytechlab-donate/public/`) and theme CSS (`learnpress-child/assets/donate/`)
+- Bumped plugin version to 1.3.2 for CSS cache busting
+- All changes CSS-only — no PHP template modifications needed
+
+---
+
+## [1.3.1] - 2026-03-24
+
+### Fixed
+- Removed scroll reveal animation — all sections always visible on page load
+
+---
+
+## [1.3.0] - 2026-03-24
+
+### Changed
+- Polished two-column design matching reference template
+- Updated color system with teal primary (#006a62) and blue accent (#2563eb)
+- Added Manrope headline font, Inter body font
+- Redesigned payment section with two-tone card layout
+- Added mission section dual image grid with floating badges
+- Testimonials staggered 3-column layout on desktop
+
+---
+
+## [1.2.0] - 2026-03-24
+
+### Added
+- Converted from theme-based approach to standalone WordPress plugin (`tonytechlab-donate`)
+- Admin settings panel with tabbed interface for all sections
+- Dynamic settings manager with defaults and sanitization
+- Shortcode `[tonytechlab_donate]` for embedding on any page
+- Color customization (primary/secondary) via admin UI
+- Font family selection from admin
+- Auto-import wp-config constants on first activation
+
+---
+
 ## [1.0.0] - 2026-03-24
 
 ### Added

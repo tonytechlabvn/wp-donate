@@ -3,7 +3,7 @@
  * Plugin Name: TonyTechLab Donate Page
  * Plugin URI:  https://tonytechlab.com
  * Description: Embeddable donate landing page with admin settings panel, VietQR and PayPal support. Use shortcode [tonytechlab_donate].
- * Version:     1.3.1
+ * Version:     1.3.2
  * Author:      TonyTechLab
  * Author URI:  https://tonytechlab.com
  * License:     GPL-2.0+
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Plugin constants */
-define( 'TONYTECHLAB_DONATE_VERSION',  '1.3.1' );
+define( 'TONYTECHLAB_DONATE_VERSION',  '1.3.2' );
 define( 'TONYTECHLAB_DONATE_PATH',     plugin_dir_path( __FILE__ ) );
 define( 'TONYTECHLAB_DONATE_URL',      plugin_dir_url( __FILE__ ) );
 define( 'TONYTECHLAB_DONATE_BASENAME', plugin_basename( __FILE__ ) );
