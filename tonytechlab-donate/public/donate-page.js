@@ -6,7 +6,7 @@
  *   2. Stat counter animation (IntersectionObserver)
  *   3. Smooth scroll for anchor links
  *   4. Copy-to-clipboard for bank account number
- *   5. Scroll reveal with staggered delays
+ *   5. Donation form: amount selection, payment method toggle, submit flow
  *   6. Hide parent theme sections (Popular Courses, Last Posts)
  *
  * Zero dependencies. Progressive enhancement — page works without JS.
@@ -146,7 +146,111 @@
         }, 2000);
     }
 
-    /* Scroll reveal removed — all sections always visible */
+    /* ── 5. Donation Form Interactions ── */
+    function initDonateForm() {
+        var customInput = page.querySelector('#donate-custom-amount');
+        var amountRadios = page.querySelectorAll('.donate-payment__amount-radio');
+        var methodLabels = page.querySelectorAll('.donate-payment__method-label');
+        var submitBtn = page.querySelector('#donate-submit-btn');
+        var bankDetails = page.querySelector('#donate-bank-details');
+        var paypalDetails = page.querySelector('#donate-paypal-details');
+        var backBtn = page.querySelector('#donate-back-btn');
+        var paypalBackBtn = page.querySelector('#donate-paypal-back-btn');
+        var qrImg = page.querySelector('#donate-qr-img');
+
+        if (!submitBtn) return;
+
+        /* Deselect radio buttons when custom amount is typed */
+        if (customInput) {
+            customInput.addEventListener('input', function () {
+                amountRadios.forEach(function (r) { r.checked = false; });
+            });
+        }
+
+        /* Clear custom input when a preset amount is selected */
+        amountRadios.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                if (customInput) customInput.value = '';
+            });
+        });
+
+        /* Payment method toggle */
+        methodLabels.forEach(function (label) {
+            var radio = label.querySelector('.donate-payment__method-radio');
+            if (!radio) return;
+
+            radio.addEventListener('change', function () {
+                methodLabels.forEach(function (l) {
+                    l.classList.remove('donate-payment__method-label--active');
+                });
+                label.classList.add('donate-payment__method-label--active');
+            });
+        });
+
+        /* Get selected amount */
+        function getSelectedAmount() {
+            if (customInput && customInput.value) {
+                return parseInt(customInput.value, 10) || 0;
+            }
+            var checked = page.querySelector('.donate-payment__amount-radio:checked');
+            return checked ? parseInt(checked.value, 10) : 0;
+        }
+
+        /* Get selected payment method */
+        function getSelectedMethod() {
+            var checked = page.querySelector('.donate-payment__method-radio:checked');
+            return checked ? checked.value : 'bank_transfer';
+        }
+
+        /* Elements to hide/show during form <-> details transition */
+        var formSteps = page.querySelectorAll('.donate-payment__step');
+
+        function showFormView() {
+            formSteps.forEach(function (s) { s.style.display = ''; });
+            submitBtn.style.display = '';
+            if (bankDetails) bankDetails.hidden = true;
+            if (paypalDetails) paypalDetails.hidden = true;
+        }
+
+        function hideFormView() {
+            formSteps.forEach(function (s) { s.style.display = 'none'; });
+            submitBtn.style.display = 'none';
+        }
+
+        /* Submit button click */
+        submitBtn.addEventListener('click', function () {
+            var amount = getSelectedAmount();
+            var method = getSelectedMethod();
+
+            if (method === 'bank_transfer' && bankDetails) {
+                /* Update QR image with selected amount */
+                if (qrImg && amount > 0) {
+                    var baseUrl = qrImg.getAttribute('data-base-url');
+                    var note = qrImg.getAttribute('data-note') || '';
+                    qrImg.src = baseUrl + '?amount=' + amount + '&addInfo=' + encodeURIComponent(note);
+                }
+                hideFormView();
+                bankDetails.hidden = false;
+                bankDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else if (method === 'paypal' && paypalDetails) {
+                hideFormView();
+                paypalDetails.hidden = false;
+                paypalDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+
+        /* Back buttons */
+        if (backBtn) {
+            backBtn.addEventListener('click', function () {
+                showFormView();
+            });
+        }
+        if (paypalBackBtn) {
+            paypalBackBtn.addEventListener('click', function () {
+                showFormView();
+            });
+        }
+    }
 
     /* ── 6. Hide Parent Theme Sections & Sidebar — Force Single Column ── */
     function hideParentThemeSections() {
@@ -185,6 +289,7 @@
         initStatCounters();
         initSmoothScroll();
         initCopyButtons();
+        initDonateForm();
         hideParentThemeSections();
     });
 })();
